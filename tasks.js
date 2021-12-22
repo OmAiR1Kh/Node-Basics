@@ -16,7 +16,12 @@ function startApp(name){
   console.log(`Welcome to ${name}'s application!`)
   console.log("--------------------")
 }
-
+/*
+help function
+*/
+function help(){
+  console.log('hello \t \t hello! \nquit \t \t to quit the app')
+}
 
 /**
  * Decides what to do depending on the data that was received
@@ -39,6 +44,9 @@ function onDataReceived(text) {
   }
   else if(text === 'hello\n'){
     hello();
+  }
+  else if(text === 'help\n'){
+    help()
   }
   else{
     unknownCommand(text);
