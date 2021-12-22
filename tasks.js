@@ -25,6 +25,7 @@ function help(){
   console.log('hello \t \t hello! \nquit \t \t to quit the app \nlist \t \t show your list \nadd \t \t to add to your task \nremove \t \t to remove (number of task) from list')
 }
 
+
 /**
  * Decides what to do depending on the data that was received
  * This function receives the input sent by the user.
