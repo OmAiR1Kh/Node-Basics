@@ -50,11 +50,17 @@ function onDataReceived(text) {
   else if(text === 'help\n'){
     help()
   }
+  else if(text === 'list\n'){
+    list();
+  }
   else{
     unknownCommand(text);
   }
 }
 
+var tasks = [["coding", true], ["english", false]]
+var undone = "[ ]"
+var done = "[✓]"
 
 /**
  * prints "unknown command"
@@ -78,6 +84,19 @@ function hello(text){
   console.log('hello! ' + (text[1] || ''))
 }
 
+/**
+* list 
+*
+* @returns {void}
+*/
+function list() {
+  console.log("This is the list of all tasks\n")
+  for (let i in tasks) {
+    if (tasks[i][1] == true) {
+      console.log("task " + (i * 1 + 1) + ": " + done + " " + tasks[i][0] + '\n')
+    } else console.log("task " + (i * 1 + 1) + ": " + undone + " " + tasks[i][0] + '\n')
+  }
+}
 
 /**
  * Exits the application
