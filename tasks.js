@@ -14,10 +14,12 @@ function startApp(name){
   process.stdin.setEncoding('utf8');
   process.stdin.on('data', onDataReceived);
   console.log(`Welcome to ${name}'s application!`)
+  console.log('for help just type "help"')
   console.log("--------------------")
 }
 /*
 help function
+help explains all the commands in this app
 */
 function help(){
   console.log('hello \t \t hello! \nquit \t \t to quit the app')
