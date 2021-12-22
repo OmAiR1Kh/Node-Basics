@@ -50,11 +50,14 @@ function onDataReceived(text) {
   else if(text === 'help\n'){
     help()
   }
+  else if(text === 'list\n'){
+    list();
+  }
   else if (text.startsWith('add')) {
     add(text);
   }
-  else if(text === 'list\n'){
-    list();
+  else if (text.startsWith('remove')) {
+    remove(text);
   }
   else{
     unknownCommand(text);
@@ -110,6 +113,15 @@ function add(text) {
   text == "add" ? console.log("Error") : tasks.push([text.substring(4), false])
 }
 
+/**
+* list remove task
+*
+* @returns {void}
+*/
+function remove(text) {
+  text = text.split(" ")
+  text == "remove" ? tasks.pop() : !isNaN(text[1]) && (text[1] <= tasks.length) ? tasks.splice(text[1] - 1, 1) : console.log("item does not exist")
+}
 /**
  * Exits the application
  *
