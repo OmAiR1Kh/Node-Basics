@@ -50,6 +50,9 @@ function onDataReceived(text) {
   else if(text === 'help\n'){
     help()
   }
+  else if (text.startsWith('add')) {
+    add(text);
+  }
   else if(text === 'list\n'){
     list();
   }
@@ -96,6 +99,15 @@ function list() {
       console.log("task " + (i * 1 + 1) + ": " + done + " " + tasks[i][0] + '\n')
     } else console.log("task " + (i * 1 + 1) + ": " + undone + " " + tasks[i][0] + '\n')
   }
+}
+
+/**
+* list add task
+*
+* @returns {void}
+*/
+function add(text) {
+  text == "add" ? console.log("Error") : tasks.push([text.substring(4), false])
 }
 
 /**
