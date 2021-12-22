@@ -77,6 +77,6 @@ function quit(){
   console.log('Quitting now, goodbye!')
   process.exit();
 }
-
+ 
 // The following line starts the application
 startApp("Omair Khoder")
