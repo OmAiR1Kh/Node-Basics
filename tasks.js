@@ -60,6 +60,9 @@ function onDataReceived(text) {
   else if (text.startsWith('remove')) {
     remove(text);
   }
+  else if (text.startsWith('edit')) {
+    edit(text);
+  }
   else{
     unknownCommand(text);
   }
@@ -123,6 +126,18 @@ function remove(text) {
   text = text.split(" ")
   text == "remove" ? tasks.pop() : !isNaN(text[1]) && (text[1] <= tasks.length) ? tasks.splice(text[1] - 1, 1) : console.log("item does not exist")
 }
+
+/**
+* edit
+*
+* @returns {void}
+*/
+function edit(text) {
+  text = text.split(' ')
+  text == "edit" ? console.log("Error") : !isNaN(text[1]) && (text[1] <= tasks.length) ? tasks[text[1] - 1][0] = text.slice(2).join(' ') : tasks[tasks.length - 1][0] = text.slice(1).join(' ')
+  /* if the user input a number bigger than the number of the tasks this will change the last item also */
+}
+
 /**
  * Exits the application
  *
