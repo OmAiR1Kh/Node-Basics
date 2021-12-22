@@ -22,7 +22,7 @@ help function
 help explains all the commands in this app
 */
 function help(){
-  console.log('hello \t \t hello! \nquit \t \t to quit the app')
+  console.log('hello \t \t hello! \nquit \t \t to quit the app \nlist \t \t show your list \nadd \t \t to add to your task \nremove \t \t to remove (number of task) from list')
 }
 
 /**
