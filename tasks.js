@@ -9,6 +9,13 @@
  * @param  {string} name the name of the app
  * @returns {void}
  */
+
+ const fs = require('fs');
+ var JsonFile
+ var tasks = []
+var undone = "[ ]"
+var done = "[✓]"
+
 function startApp(name){
   process.stdin.resume();
   process.stdin.setEncoding('utf8');
@@ -16,6 +23,26 @@ function startApp(name){
   console.log(`Welcome to ${name}'s application!`)
   console.log('for help just type "help"')
   console.log("--------------------")
+  if (process.argv.length == 2) {
+    JsonFile = 'database.json'
+  } else if (process.argv.length == 3) {
+    JsonFile = process.argv[2]
+  } else {
+    console.log('\u001b[' + 41 + 'm' + "NB:please type the JSON file name only" + '\u001b[0m')
+    process.exit()
+  }
+
+  /* ============ Reading Json File =============*/
+  fs.readFile(JsonFile, (err, data) => {
+
+    if (err) {
+      console.log('\u001b[' + 41 + 'm' + "NB: Couldn't read the JSON file Check the file please and try again" + '\u001b[0m')/* writing red message in console */
+      process.exit()
+    } else {
+      tasks = JSON.parse(data)
+      console.log(JsonFile + " is open")
+    }
+  });
 }
 /*
 help function
@@ -74,9 +101,7 @@ function onDataReceived(text) {
   }
 }
 
-var tasks = [["coding", true], ["english", false]]
-var undone = "[ ]"
-var done = "[✓]"
+
 
 /**
  * prints "unknown command"
@@ -173,6 +198,8 @@ function uncheck(text) {
  */
 function quit(){
   console.log('Quitting now, goodbye!')
+  const path = require('path');
+  fs.writeFileSync(path.resolve(__dirname, JsonFile), JSON.stringify(tasks));
   process.exit();
 }
  
